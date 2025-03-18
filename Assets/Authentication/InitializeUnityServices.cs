@@ -1,6 +1,8 @@
 using System;
 using Unity.Services.Core;
 using UnityEngine;
+using Unity.Services.Authentication;
+using Unity.Services.CloudSave;
 
 public class InitializeUnityServices : MonoBehaviour
 {
