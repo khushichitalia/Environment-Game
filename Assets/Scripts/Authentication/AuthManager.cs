@@ -87,7 +87,7 @@ public class AuthManager : MonoBehaviour
             Debug.Log("SignIn is successful.");
 
             // tentatively just storing arbitrary data
-            await SaveUserData(username);
+            //await SaveUserData(username);
 
             // successful login moves to main menu
             SceneManager.LoadScene("Main Menu");
