@@ -143,6 +143,7 @@ public class AuthManager : MonoBehaviour
         var data = new Dictionary<string, object>
         {
             { "Username", username },
+            { "Score", 0 },
             { "LastLoginTime", System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss") }
         };
 
