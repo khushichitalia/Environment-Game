@@ -7,7 +7,6 @@ public class RecyclingTrashBinScript : MonoBehaviour
     private Color wrongColor = Color.red;
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("🔥 Trigger Entered! Object: " + other.gameObject.name);
         Debug.Log("Collided with: " + other.gameObject.name);
         if (other.gameObject.CompareTag("Recycling Item")) 
         {
