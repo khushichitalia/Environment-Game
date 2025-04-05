@@ -11,6 +11,7 @@ public class OrganicTrashBinScript : MonoBehaviour
         if (other.gameObject.CompareTag("Organic Item")) 
         {
             Destroy(other.gameObject); 
+            ScoreScript.instance.AddScore(10);
             Debug.Log("Destroyed: " + other.gameObject.name);
         }
 
