@@ -1,29 +1,48 @@
-name: SonarQube
+name: SonarQube Unity C# Analysis
+
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   build:
-    name: Build and analyze
+    name: Build and analyze Unity C# project
     runs-on: windows-latest
-    env:
-      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Install Build Wrapper
-        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v5
-      - name: Run Build Wrapper
-        run: |
-          build-wrapper-win-x86-64.exe --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} <insert_your_clean_build_command>
-      - name: SonarQube Scan
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'  # or the version Unity uses (like 4.7.1, 5.x)
+
+      - name: Start SonarQube Scanner
         uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json"
+            begin
+            /k:"your_project_key"
+            /d:sonar.host.url=${{ secrets.SONAR_HOST_URL }}
+            /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+            /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+            /d:sonar.exclusions="**/Assets/Plugins/**,**/*.meta"
+
+      - name: Build Unity Project
+        run: |
+          "C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" \
+          -batchmode -nographics -quit \
+          -projectPath . \
+          -buildTarget StandaloneWindows64 \
+          -executeMethod BuildScript.PerformBuild
+
+      - name: End SonarQube Scanner
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
