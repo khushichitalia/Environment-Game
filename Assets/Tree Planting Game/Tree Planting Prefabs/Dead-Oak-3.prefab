@@ -112,7 +112,7 @@ MonoBehaviour:
   - {fileID: 232635349, guid: e80b83dedae566742b14f69563ba775a, type: 3}
   - {fileID: 304609060, guid: e80b83dedae566742b14f69563ba775a, type: 3}
   - {fileID: -259430891, guid: e80b83dedae566742b14f69563ba775a, type: 3}
-  timePerStage: 5
+  timePerStage: 7
 --- !u!61 &-7093639368312655400
 BoxCollider2D:
   m_ObjectHideFlags: 0

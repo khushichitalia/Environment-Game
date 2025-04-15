@@ -4,7 +4,7 @@ public class TreeGrowth : MonoBehaviour
 {
     public Sprite[] healthyStages;
     public Sprite[] dryStages;
-    public float timePerStage = 5f;
+    public float timePerStage = 10f;
 
     private int currentStage = 0;
     private float timer = 0f;
