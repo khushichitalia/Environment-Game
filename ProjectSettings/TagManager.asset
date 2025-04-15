@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Organic Item
   - Recycling Item
+  - Plantable
+  - Seed
+  - Tree
   layers:
   - Default
   - TransparentFX
