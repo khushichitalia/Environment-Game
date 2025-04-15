@@ -11,7 +11,7 @@ public class RecyclingTrashBinScript : MonoBehaviour
         if (other.gameObject.CompareTag("Recycling Item")) 
         {
             Destroy(other.gameObject); 
-            ScoreScript.instance.AddScore(10);
+            ScoreManager.Instance?.AddPoints(10);
             Debug.Log("Destroyed: " + other.gameObject.name);
         }
 

@@ -35,7 +35,7 @@ public class GameTimerManager : MonoBehaviour
     void UpdateTimerUI()
     {
         int seconds = Mathf.CeilToInt(timeRemaining);
-        timerText.text = "Time: " + seconds.ToString();
+        timerText.text = "Time Left: " + seconds.ToString();
     }
 
     void EndGame()

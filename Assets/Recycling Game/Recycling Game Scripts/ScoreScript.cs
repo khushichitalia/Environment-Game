@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class ScoreScript : MonoBehaviour
 {
     public static ScoreScript instance;
-    public TMP_Text scoreText; 
+    public Text scoreText; 
     public int score = 0; 
 
     void Awake()
