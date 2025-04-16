@@ -12,11 +12,11 @@ public class GameSessionManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // prevent duplicates
+            Destroy(gameObject);
         }
     }
 }

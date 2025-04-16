@@ -9,18 +9,17 @@ public class TreeGrowth : MonoBehaviour
     private int currentStage = 0;
     private float timer = 0f;
     private bool isWatered = false;
-    private int waterCount = 0; // how many times the tree was watered
+    private int waterCount = 0;
     private bool bonusGiven = false;
     private SpriteRenderer spriteRenderer;
 
-    private float plantedYPosition; // the dirt patch center Y
+    private float plantedYPosition;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = healthyStages[0];
 
-        // Store the spawn Y position once
         plantedYPosition = transform.position.y;
 
         AlignBottomToPlantedY();
@@ -41,7 +40,6 @@ public class TreeGrowth : MonoBehaviour
                 isWatered = false;
                 AlignBottomToPlantedY();
 
-                // ➕ Check for fully grown healthy bonus
                 if (IsFullyGrown() && !bonusGiven)
                 {
                     ScoreManager.Instance?.AddPoints(10);
@@ -55,7 +53,6 @@ public class TreeGrowth : MonoBehaviour
                 AlignBottomToPlantedY();
             }
 
-            // Reset watering flag regardless
             isWatered = false;
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DraggableUIItemWithDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public GameObject treePrefab; // Assign in Inspector
+    public GameObject treePrefab;
 
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -37,11 +37,9 @@ public class DraggableUIItemWithDrop : MonoBehaviour, IDragHandler, IBeginDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Get drop location in world space
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        worldPos.z = 0; // Force tree onto visible layer
+        worldPos.z = 0;
 
-        // Raycast to find dirt patch
         Collider2D hit = Physics2D.OverlapPoint(worldPos);
         if(hit != null && hit.CompareTag("Plantable"))
         {
@@ -51,12 +49,10 @@ public class DraggableUIItemWithDrop : MonoBehaviour, IDragHandler, IBeginDragHa
                 Instantiate(treePrefab, hit.transform.position, Quaternion.identity);
                 patch.hasTree = true;
 
-                // ➕ Add planting points
                 ScoreManager.Instance?.AddPoints(5);
             }
         }
 
-        // Always reset seed to inventory position (even if drop was valid)
         rectTransform.localPosition = originalPosition;
         if(canvasGroup != null)
         {

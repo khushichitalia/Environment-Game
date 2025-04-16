@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class GameTimerManager : MonoBehaviour
 {
-    public float gameDuration = 60f; // total seconds
+    public float gameDuration = 60f;
     private float timeRemaining;
-    public Text timerText; // assign in inspector
+    public Text timerText;
 
     private bool gameRunning = true;
 
@@ -42,11 +42,9 @@ public class GameTimerManager : MonoBehaviour
     {
         Debug.Log("Time's up!");
 
-        // Set up the session for the end screen
         GameSessionManager.Instance.finalScore = ScoreManager.Instance.currentScore;
-        GameSessionManager.Instance.lastMinigameSceneName = "Tree Planting Game"; // name of your tree game scene
+        GameSessionManager.Instance.lastMinigameSceneName = "Tree Planting Game";
 
-        // Load the modular end screen
         SceneManager.LoadScene("End Screen");
     }
 }

@@ -10,14 +10,12 @@ public class ChangeInput : MonoBehaviour
     public Selectable firstInput;
     public Button submitButton;
 
-    // Start is called before the first frame update
     void Start()
     {
         system = EventSystem.current;
         firstInput.Select();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift)) 

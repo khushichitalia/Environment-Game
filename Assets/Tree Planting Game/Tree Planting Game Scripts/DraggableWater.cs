@@ -7,7 +7,7 @@ public class DraggableWateringCan : MonoBehaviour, IDragHandler, IBeginDragHandl
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Vector2 originalPosition;
-    public GameObject waterSplashPrefab; // assign in inspector
+    public GameObject waterSplashPrefab;
 
 
     private void Awake()
@@ -37,7 +37,6 @@ public class DraggableWateringCan : MonoBehaviour, IDragHandler, IBeginDragHandl
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Get mouse position in world space
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0;
 
@@ -48,10 +47,9 @@ public class DraggableWateringCan : MonoBehaviour, IDragHandler, IBeginDragHandl
             if (tree != null)
             {
                 tree.WaterTree();
-                ScoreManager.Instance?.AddPoints(2); // ➕ Add watering points
+                ScoreManager.Instance?.AddPoints(2);
                 Debug.Log("Tree has been watered!");
 
-                // 💦 Play water splash effect
                 if (waterSplashPrefab != null)
                 {
                     Instantiate(waterSplashPrefab, hit.transform.position, Quaternion.identity);
@@ -59,7 +57,6 @@ public class DraggableWateringCan : MonoBehaviour, IDragHandler, IBeginDragHandl
             }
         }
 
-        // Always return can to original spot
         rectTransform.localPosition = originalPosition;
         if (canvasGroup != null) canvasGroup.alpha = 1f;
     }

@@ -22,6 +22,6 @@ public class EndScreenUI : MonoBehaviour
 
     public void OnBackHome()
     {
-        SceneManager.LoadScene("Main Menu"); // or whatever your home scene is called
+        SceneManager.LoadScene("Main Menu");
     }
 }
