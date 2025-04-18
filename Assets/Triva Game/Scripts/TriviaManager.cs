@@ -29,10 +29,12 @@ public class TriviaManager : MonoBehaviour
     public int score = 0;
     
     private string correctAnswer = "";
+
+    public GameTimerManager GameTimerManager;
     
     void Start()
     {
-        q.text = "Let's learn some environment TRIVIA! Click any of the buttons bellow to start!";
+        q.text = "Let's learn some environment TRIVIA! You will have 1 minute to anwser as many questions as you can right! The questions will get harder as you go so don't feel bad if you cant answer them all! Click any of the buttons bellow to start!";
         a1T = a1.GetComponentInChildren<TextMeshProUGUI>();
         a2T = a2.GetComponentInChildren<TextMeshProUGUI>();
         a3T = a3.GetComponentInChildren<TextMeshProUGUI>();
@@ -47,6 +49,8 @@ public class TriviaManager : MonoBehaviour
     {
         GameObject clickedObj = EventSystem.current.currentSelectedGameObject;
 
+        GameTimerManager.enabled = true;
+        
         if (clickedObj == a1.gameObject)
             StartCoroutine(IncreaseScore("A"));
         else if (clickedObj == a2.gameObject)
