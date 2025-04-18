@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tree Planting Game.unity
     guid: 29d8c943217b03640b3b4ee2bcbaa923
   - enabled: 1
+    path: Assets/Scenes/Trivia Game.unity
+    guid: 1391f2a59a7b1d84894a0a6a0b11614a
+  - enabled: 1
     path: Assets/Scenes/End Screen.unity
     guid: f06233b611ceece448119fd589f369fc
   m_configObjects: {}

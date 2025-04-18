@@ -43,7 +43,7 @@ public class GameTimerManager : MonoBehaviour
         Debug.Log("Time's up!");
 
         GameSessionManager.Instance.finalScore = ScoreManager.Instance.currentScore;
-        GameSessionManager.Instance.lastMinigameSceneName = "Tree Planting Game";
+        GameSessionManager.Instance.lastMinigameSceneName = SceneManager.GetActiveScene().name;
 
         SceneManager.LoadScene("End Screen");
     }

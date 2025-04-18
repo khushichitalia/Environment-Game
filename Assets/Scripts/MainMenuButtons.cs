@@ -15,6 +15,6 @@ public class MainMenuButtons : MonoBehaviour
 
     public void LoadTriviaMinigame()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Trivia Game");
     }
 }
