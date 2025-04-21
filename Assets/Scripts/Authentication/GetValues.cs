@@ -27,8 +27,16 @@ public class GetValues : MonoBehaviour
             ScoreText.text = Score.Value.GetAs<string>();
         }
     }
-    void Update()
+    
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called third
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         LoadData();
     }
+    
 }
