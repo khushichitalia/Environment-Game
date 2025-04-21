@@ -17,13 +17,12 @@ public class RecyclingTrashBinScript : MonoBehaviour
             ScoreManager.Instance?.AddPoints(10);
             Debug.Log("Destroyed: " + other.name);
         }
-        else
+        else if (other.CompareTag("Organic Item")) 
         {
             Renderer itemRenderer = other.GetComponent<Renderer>();
             if (itemRenderer != null)
             {
                 itemRenderer.material.color = wrongColor;
-                itemScript?.TriggerRespawn();
                 Debug.Log("Wrong Item: " + other.name);
             }
         }
