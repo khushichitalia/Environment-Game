@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 140779286}
   - component: {fileID: 140779288}
   - component: {fileID: 140779287}
+  - component: {fileID: 140779289}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -201,6 +202,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140779285}
   m_CullTransparentMesh: 1
+--- !u!114 &140779289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140779285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ff959fbb6286443846df634092d2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &168386027
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,9 +766,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801221207}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: sceneloader
+      - m_Target: {fileID: 2049055660}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: LoadTriviaMinigame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -812,10 +825,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 801221202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c4ca757c764c7d40baf187244884202, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ff959fbb6286443846df634092d2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: TestScoreIncrease
 --- !u!1 &1324656008
 GameObject:
   m_ObjectHideFlags: 0
