@@ -32,7 +32,7 @@ public class TestSciptForIncreasePoints : MonoBehaviour
         var newPlayerdata = new Dictionary<string, object>
         {
             { "Username", User },
-            { "Score", currentScore + 10},
+            { "Score", currentScore + GameSessionManager.Instance.finalScore},
             { "LastLoginTime", LastLog } 
         };
 

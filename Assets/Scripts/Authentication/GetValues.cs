@@ -27,7 +27,7 @@ public class GetValues : MonoBehaviour
             ScoreText.text = Score.Value.GetAs<string>();
         }
     }
-    void Start()
+    void Update()
     {
         LoadData();
     }
