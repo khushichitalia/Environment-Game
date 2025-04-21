@@ -1,26 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RecyclingTrashBinScript : MonoBehaviour
 {
     private Color wrongColor = Color.red;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collided with: " + other.gameObject.name);
-        if (other.gameObject.CompareTag("Recycling Item")) 
-        {
-            Destroy(other.gameObject); 
-            ScoreManager.Instance?.AddPoints(10);
-            Debug.Log("Destroyed: " + other.gameObject.name);
-        }
 
-        else {
-            Renderer itemRenderer = other.gameObject.GetComponent<Renderer>();
+        var itemScript = other.GetComponent<CollectibleItem>();
+
+        if (other.CompareTag("Recycling Item"))
+        {
+            itemScript?.TriggerRespawn();
+            Destroy(other.gameObject);
+            ScoreManager.Instance?.AddPoints(10);
+            Debug.Log("Destroyed: " + other.name);
+        }
+        else
+        {
+            Renderer itemRenderer = other.GetComponent<Renderer>();
             if (itemRenderer != null)
             {
                 itemRenderer.material.color = wrongColor;
-                Debug.Log("Wrong Item: " + other.gameObject.name);
+                itemScript?.TriggerRespawn();
+                Debug.Log("Wrong Item: " + other.name);
             }
         }
     }
